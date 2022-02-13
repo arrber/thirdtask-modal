@@ -7,16 +7,22 @@ const App = () => {
 
   const [open, setOpen] = useState(false);
 
+  const OpenModal = () => {
+    setOpen(!open);
+  }
+
   return (
     <div className="app">
-      <div className="main">
+      <div className={!open ? "main" : "test"}>
         <h2>Click the button to open modal!</h2>
-        <button onClick={() => {setOpen(true)}} className="btn">Open</button>
+        <button onClick={OpenModal} className="btn">Open</button>
       </div>
       <div className="modal">
         {
           open &&
-          <Modal/>
+          <Modal
+            close={OpenModal}
+          />
         }
       </div>
     </div>
